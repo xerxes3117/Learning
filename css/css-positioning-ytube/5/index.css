@@ -1,0 +1,38 @@
+section {
+  border: 1px solid blue;
+  width: 100%;
+}
+
+div {
+  margin: 5px;
+  width: 50px;
+  height: 150px;
+}
+
+.left.one {
+  float: left;
+  background: pink;
+  margin-right: 10px;
+}
+
+.left.two {
+  float: left;
+  background: pink;
+  margin-left: 10px;
+}
+
+.right {
+  float: left;
+  background: cyan;
+}
+
+.first::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.second {
+  clear: both;
+  margin-top: 40px;
+}
