@@ -6,8 +6,8 @@ body {
   font-family: sans-serif;
 }
 
-hr{
-    opacity: 0.4;
+hr {
+  opacity: 0.4;
 }
 
 .container {
@@ -20,7 +20,6 @@ hr{
   box-shadow: 0px -2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
 }
-
 .container p {
   color: #646464;
   font-size: 15px;
@@ -30,29 +29,10 @@ form {
   margin: 20px 0 10px 0;
   text-align: initial;
 }
-
-input[type="text"],
-input[type="password"] {
-  display: block;
-  background-color: rgba(0, 0, 0, 0.05);
-  width: 100%;
-  height: 4vh;
-  border: none;
-  margin: 5px 0 20px 0;
-  padding: 5px;
-  font-size: 15px;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-  background-color:  white
-}
-
 form label {
   font-size: 15px;
   color: #646464;
 }
-
 form button {
   display: block;
   width: 100%;
@@ -65,15 +45,33 @@ form button {
   color: white;
   font-size: 15px;
 }
-
-form button:hover   {
-    background-color: #3fac70e6;
+form button:hover {
+  background-color: #3fac70e6;
+  -webkit-transform: translate(-1px, -1px);
+  -ms-transform: translate(-1px, -1px);
+  transform: translate(-1px, -1px);
 }
-
-#terms {
+form #terms {
   display: inline-block;
   font-size: 13px;
   margin-top: 20px;
+}
+
+input[type=text],
+input[type=password] {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.05);
+  width: 100%;
+  height: 4vh;
+  border: none;
+  margin: 5px 0 20px 0;
+  padding: 5px;
+  font-size: 15px;
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+  background-color: white;
 }
 
 #sign-in {
@@ -81,3 +79,5 @@ form button:hover   {
   font-size: 14px;
   margin-top: 10px;
 }
+
+/*# sourceMappingURL=index.css.map */

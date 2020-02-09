@@ -1,0 +1,39 @@
+HTML page lifecycle
+
+- any <script> element without async or defer attributes, 
+  as well as inline scripts, are fetched and executed immediately, 
+  before the browser continues to parse the page.
+
+document.addEventListener('DOMContentLoaded', function(){...}) :
+- Waits for the DOM to render. 
+- It also waits for any <script> without async/defer to execute.
+- Does not wait for any resources like styles, images etc.
+- <script> themselves wait for any CSS styles (eg. <link>) before them.
+
+window.onload 
+- Waits for whole page to render including DOM and all resources like CSS styles, images etc.
+
+window.onbeforeunload
+- Gets called if user 1)navigates away from 2)closes 3)reloads the browser window/tab.
+- Can be used for safety in case user has some unsaved data on the page.
+
+document.readyState
+- Its value can be used to check for various stages of lifecycle:
+  "loading" - the DOM is loading
+  "interactive" - DOM was fully read (called just before document.DOMContentLoaded)
+  "complete" - whole page loaded (called just before window.onload)
+
+Summary(final order of each of above):
+    [1] readyState:loading
+    [2] readyState:interactive
+    [2] DOMContentLoaded
+    [4] readyState:complete
+    [4] window onload
+
+Async/Defer:
+https://stackoverflow.com/questions/10808109/script-tag-async-defer
+https://flaviocopes.com/javascript-async-defer/
+
+
+React page lifecycle
+https://stackoverflow.com/questions/40104350/react-js-is-domcontentloaded-equal-with-componentdidmount
