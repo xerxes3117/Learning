@@ -6,8 +6,7 @@ if (!window.Promise) {
 }
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker
+  navigator.serviceWorker
     .register('/sw.js')
     .then(function () {
       console.log('Service worker registered!');
@@ -15,7 +14,6 @@ if ('serviceWorker' in navigator) {
     .catch(function(err) {
       console.log(err);
     });
-  })
 }
 
 window.addEventListener('beforeinstallprompt', function(event) {
