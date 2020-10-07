@@ -1,3 +1,10 @@
+/**
+ * ? How UTF-8 is optimizing space
+ * ? Read golang blog on string, runes etc. - https://blog.golang.org/strings
+ * ? Read JSOM links from evernote
+ * ? Read Marshal documentation - https://golang.org/pkg/encoding/json/#Marshal
+ */
+
 package main
 
 import (
