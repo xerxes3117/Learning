@@ -123,6 +123,11 @@ class Graph {
 
         console.log("DFS(Iterative) traversal from vertex " + startVertex + " : ", result.slice(4))
     }
+
+    detectCycle(){
+        //For each vertex recursively traverse the graph 
+        //In recursion base case would be if starting vertex === current vertex
+    }
 }
 
 let g1 = new Graph();
@@ -141,21 +146,21 @@ let g1 = new Graph();
 //Creating a sample graphs
 
 //Sample 1
-g1.addVertex('A')
-g1.addVertex('B')
-g1.addVertex('C')
-g1.addVertex('D')
-g1.addVertex('E')
-g1.addEdge('A', 'B')
-g1.addEdge('A', 'D')
-g1.addEdge('B', 'C')
-g1.addEdge('B', 'E')
-g1.addEdge('D', 'E')
-g1.addEdge('D', 'B')
-g1.addVertex('F')
-g1.addEdge('C', 'F')
-g1.addEdge('F', 'E')
-console.log(g1.printGraph())
+// g1.addVertex('A')
+// g1.addVertex('B')
+// g1.addVertex('C')
+// g1.addVertex('D')
+// g1.addVertex('E')
+// g1.addEdge('A', 'B')
+// g1.addEdge('A', 'D')
+// g1.addEdge('B', 'C')
+// g1.addEdge('B', 'E')
+// g1.addEdge('D', 'E')
+// g1.addEdge('D', 'B')
+// g1.addVertex('F')
+// g1.addEdge('C', 'F')
+// g1.addEdge('F', 'E')
+// console.log(g1.printGraph())
 
 //Sample 2
 // g1.addVertex('A')
@@ -189,17 +194,21 @@ console.log(g1.printGraph())
 // console.log(g1.printGraph())
 
 //Testing depthFirstSearchRecursive
-console.log('\nTesting depthFirstSearchRecursive ...............................................')
-g1.depthFirstSearchRecursive('A')
-g1.depthFirstSearchRecursive('B')
+// console.log('\nTesting depthFirstSearchRecursive ...............................................')
+// g1.depthFirstSearchRecursive('A')
+// g1.depthFirstSearchRecursive('B')
 
 //Testing depthFirstSearchIterative
-console.log('\nTesting depthFirstSearchIterative ...............................................')
-g1.depthFirstSearchIterative('A')
-g1.depthFirstSearchIterative('B')
+// console.log('\nTesting depthFirstSearchIterative ...............................................')
+// g1.depthFirstSearchIterative('A')
+// g1.depthFirstSearchIterative('B')
 
 //Testing breadthFirstSearch
-console.log('\nTesting breadthFirstSearch ...............................................')
-g1.breadthFirstSearch('A')
-g1.breadthFirstSearch('B')
+// console.log('\nTesting breadthFirstSearch ...............................................')
+// g1.breadthFirstSearch('A')
+// g1.breadthFirstSearch('B')
+
+//Testing detectCycle
+console.log('\nTesting detectCycle .......................................................')
+
 

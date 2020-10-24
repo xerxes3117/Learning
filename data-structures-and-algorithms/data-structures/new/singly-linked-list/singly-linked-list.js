@@ -4,9 +4,13 @@
 
 const Node = require('./node.js')
 
-module.exports = class SinglyLinkedList {
+class SinglyLinkedList {
     constructor(){
         this.head = null;
+    }
+
+    getHead(){
+        return this.head;
     }
 
     printList() {
@@ -98,51 +102,51 @@ module.exports = class SinglyLinkedList {
     }
 }
 
-// let L1 = new SinglyLinkedList();
-// //Testing isEmpty
+let L1 = new SinglyLinkedList();
+//Testing isEmpty
 // console.log("testing isEmpty ........................................................................")
 // console.log(L1.isEmpty());
 
-// //Testing printList
+//Testing printList
 // console.log("testing printList .......................................................................")
 // console.log(L1.printList());
 
-// //Testing insertAtHead
-// console.log("testing insertAtHead .....................................................................")
-// console.log(L1.insertAtHead(4));
-// console.log(L1.insertAtHead(3));
-// console.log(L1.insertAtHead(2));
-// console.log(L1.insertAtHead(1));
-// console.log(L1.printList());
+//Testing insertAtHead
+console.log("testing insertAtHead .....................................................................")
+L1.insertAtHead(4)
+L1.insertAtHead(3)
+L1.insertAtHead(2)
+L1.insertAtHead(1)
+console.log(L1.printList());
 
-// //Testing insertAtTail
-// console.log("Testing insertAtTail .......................................................................")
-// console.log(L1.insertAtTail(5));
-// console.log(L1.insertAtTail(6));
-// console.log(L1.insertAtTail(7));
-// console.log(L1.insertAtTail(8));
-// console.log(L1.printList());
+//Testing insertAtTail
+console.log("Testing insertAtTail .......................................................................")
+L1.insertAtTail(5)
+L1.insertAtTail(6)
+L1.insertAtTail(7)
+L1.insertAtTail(8)
+console.log(L1.printList());
 
-// //Testing removeFromHead
+//Testing removeFromHead
 // console.log("testing removeFromHead .......................................................................")
 // console.log(L1.removeFromHead());
 // console.log(L1.removeFromHead());
 // console.log(L1.printList());
 
-// //Testing removeFromTail
+//Testing removeFromTail
 // console.log("testing removeFromTail ......................................................................")
 // console.log(L1.removeFromTail());
 // console.log(L1.removeFromTail());
 // console.log(L1.printList());
 
-// //Testing getFromIndex
+//Testing getFromIndex
 // console.log("testing getFromIndex ...........................................................................")
 // console.log(L1.getFromIndex(0));
 // console.log(L1.getFromIndex(1));
 // console.log(L1.getFromIndex(3));
 // console.log(L1.getFromIndex(5));
 
-// //Testing removeFromIndex
+//Testing removeFromIndex
 // console.log("testing removeFromIndex ......................................................................")
 // console.log(L1.removeFromIndex(0))
 // console.log(L1.printList())
@@ -150,3 +154,15 @@ module.exports = class SinglyLinkedList {
 // console.log(L1.printList())
 // console.log(L1.removeFromIndex(3))
 // console.log(L1.printList());
+
+//Iterating through linked list in reverse order using recursion
+let arr = [];
+function iterateInReverse(head, arr){
+    if(head != null){
+        iterateInReverse(head.next, arr)
+        arr.push(head.value);
+    }
+}
+console.log("testing iterateInReverse ........................................................................")
+iterateInReverse(L1.getHead(), arr)
+console.log(arr)
