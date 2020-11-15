@@ -1,17 +1,26 @@
-var http = require('http');
-var fs = require('fs');
+var express = require('express');
 
+var app = express();
+app.set('view engine', 'ejs');
 
-var server = http.createServer(function(req, res) {
-    console.log('Request was made: ' + req.url)
+app.get('/', function(req, res) {
+    res.render('index');
+})
 
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    var myObj = {
-        name: 'Vaibhav',
-        age: 29
-    };
-    res.end(JSON.stringify(myObj));
-});
+app.get('/contact', function(req,res) {
+    res.send('');
+})
 
-server.listen(3000, '127.0.0.1');
-console.log('Now listerning on port 3000...')
+app.get('/profile/:id', function(req,res) {
+    var data = {
+        age: 29, 
+        job: 'ninja',
+        hobbies: ['eating', 'fightinh', 'fishing']
+    }
+    res.render('profile', {
+        id: req.params.id,
+        data: data
+    });
+})
+
+app.listen(3000); 
