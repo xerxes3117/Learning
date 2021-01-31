@@ -10,7 +10,7 @@ export default {
       },
     entities: [Post],
     dbName: 'lireddit',
-    clientUrl: 'http://localhost:5433',
+    clientUrl: 'http://localhost:5432',
     user: 'postgres',
     password: 'combination',
     debug: !__prod__,
