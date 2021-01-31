@@ -1,0 +1,11 @@
+Tech Stack:
+- React
+- Typescript
+- GraphQL
+- URQL/Apollo
+- Node.js
+- PostgreSQL
+- MikroORM/TypeORM
+- Redis
+- Next.js
+- TypeGraphQL 
