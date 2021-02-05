@@ -89,7 +89,7 @@ const RootQuery = new GraphQLObjectType({
 })
 
 /**
- * List of mutations:
+ * List of mutations
  * Mutations are used to update data through a graphql query
  */
 const Mutation = new GraphQLObjectType({
