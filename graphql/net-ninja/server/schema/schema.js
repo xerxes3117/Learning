@@ -37,7 +37,7 @@ const AuthorType = new GraphQLObjectType({
     books: {
       type: new GraphQLList(BookType),
       resolve(parent, args) {
-        return Book.find(parent.id)
+        return Book.find({authorId: parent.id})
       }
     }
   })

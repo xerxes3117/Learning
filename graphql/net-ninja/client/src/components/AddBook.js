@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import {useQuery, useMutation} from '@apollo/client';
-import {getAuthorsQuery, addBookMutation, getBookQuery} from '../queries/queries'
+import {getAuthorsQuery, addBookMutation, getBooksQuery} from '../queries/queries'
 
 function AddBook() {
   
@@ -19,7 +19,7 @@ function AddBook() {
       addBook({
         variables: {name, genre, authorId}, 
         //This will refetch the getBookQuery from server and also re-render bookList component with updated data
-        refetchQueries: [{query: getBookQuery}] 
+        refetchQueries: [{query: getBooksQuery}] 
       })
     }
 
