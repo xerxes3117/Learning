@@ -1,11 +1,11 @@
 import './App.css';
 
-import UseEffectCounter2 from './components/UseEffectCounter2';
+import DataFetching1 from './components/DataFetching1';
 
 function App() {
   return (
     <div className="App">
-      <UseEffectCounter2 />
+      <DataFetching1 />
     </div>
   );
 }
