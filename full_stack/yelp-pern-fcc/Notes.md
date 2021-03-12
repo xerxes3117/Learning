@@ -1,0 +1,1 @@
+1. Use parametrized sql queries to prevent SQL injection
