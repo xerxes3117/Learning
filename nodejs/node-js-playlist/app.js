@@ -6,7 +6,7 @@ var app = express();
 //Setup template engine
 app.set('view engine', 'ejs');
 
-//serve static files (will be served on any request that requires the resource)
+//serve static files (will be served on ANY request that requires the resource)
 app.use(express.static('./public'));
 
 //fire controllers
