@@ -5,7 +5,7 @@ import RestaurantList from '../components/RestaurantList'
 
 function Home() {
   return (
-    <div style={{maxWidth: "80%", margin: "0 auto"}}>
+    <div>
       <Header />
       <AddRestaurant />
       <RestaurantList />
