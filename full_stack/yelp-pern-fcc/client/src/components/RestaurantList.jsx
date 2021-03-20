@@ -1,10 +1,12 @@
 import React, {useEffect, useContext} from 'react'
 import { RestaurantsContext } from '../context/RestaurantsContext';
-import fetchRestaurantsAPI from '../services/RestaurantFinder'
+import {fetchRestaurantsAPI, deleteRestaurantAPI} from '../services/Restaurant-API'
+import {useHistory} from 'react-router-dom';
 
 function RestaurantList() {
 
   const {restaurants, setRestaurants} = useContext(RestaurantsContext);
+  let history = useHistory()
 
   useEffect(() => {
       const fetchRestaurants = async () => {
@@ -18,6 +20,22 @@ function RestaurantList() {
 
       fetchRestaurants();
   }, [])
+
+  const deleteRestaurantHandler = async (id) => {
+    try {
+      const response = await deleteRestaurantAPI(id)
+      if(response.status === 204) {
+        const updatedRestaurants = [...restaurants].filter(restaurant => restaurant.id !== id);
+        setRestaurants(updatedRestaurants);
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const updateRestaurantHandler = async (id) => {
+    history.push(`/restaurants/${id}/update`);
+  }
 
   return (
     <div className="list-group">
@@ -40,10 +58,10 @@ function RestaurantList() {
               <td>{"$".repeat(price_range)}</td>
               <td>Rating</td>
               <td>
-                <button className="btn btn-warning">Update</button>
+                <button className="btn btn-warning" onClick={() => updateRestaurantHandler(id)}>Update</button>
               </td>
               <td>
-                <button className="btn btn-danger">Delete</button>
+                <button className="btn btn-danger" onClick={() => deleteRestaurantHandler(id)}>Delete</button>
               </td>
             </tr>
           ))}

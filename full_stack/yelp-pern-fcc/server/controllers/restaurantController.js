@@ -34,6 +34,7 @@ module.exports = function(app, db) {
   //Create a new restaurant
   app.post('/api/v1/restaurants', async (req, res) => {
     try {
+      console.log(req.body)
       const {name, location, price_range} = req.body;
       const results = await db.query('insert into restaurants (name, location, price_range) values($1, $2, $3) returning *', [name, location, price_range])
 
@@ -65,12 +66,13 @@ module.exports = function(app, db) {
   })
 
   //Delete restaurant
+  /** 
+   * Status 204 doesn't return any data to front end so unlike other apis we don't call .json() on line 75 here 
+   */
   app.delete("/api/v1/restaurants/:id", async (req, res) => {
     try {
       const result = await db.query('delete from restaurants where id = $1 returning *', [req.params.id]);
-      res.status(204).json({
-        status: result.rows.length > 0 ? 'success' : 'No restaurant found with this id'
-      })
+      res.status(204).send()
     } catch (error) {
       console.log(err)
     }
