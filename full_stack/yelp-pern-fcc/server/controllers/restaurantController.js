@@ -21,7 +21,7 @@ module.exports = function(app, db) {
     try {
       const result = await db.query('select * from restaurants where id = $1', [req.params.id])
       res.status(200).json({
-        status: 'success',
+        status: result.rows.length > 0 ? 'success' : 'not found',
         data: {
           restaurant : result.rows.length > 0 ? result.rows[0] : 'No restaurant found with this id'
         }

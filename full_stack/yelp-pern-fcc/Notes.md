@@ -1,7 +1,9 @@
 ## Learning
 1. Use **parametrized sql** queries to prevent **SQL injection**
 2. Don't wrap callback function of react hook in async as hook callback does not expect a promise (https://www.robinwieruch.de/react-hooks-fetch-data)
-3. **Every component and it's children** in <Route component=...> has access to **history** API of react-router which can be used to navigate to other routes 
+3. **Every component** in <Route component=...> has access to **history** API of react-router as a prop which can be used to navigate to other routes 
+   For other nested/child components, we can use useHistory() hook to get access to same history API
+4. Even if we are wrapping a **Context** around all routes in our app (eg. see App.jsx), avoid sharing that context across routes i.e. in a route component (say **component A**) or it's children don't use a value from **Context API** which was fetched from BE on another route's component (say **component B**). This is becuase on page refresh (on the **component A**) react router will only match the route and load the **component B** through react. Thus the **component B** will not be loaded and context will be empty. **What to do**: Fetch the data as required from the backend in **component A** and use that value. For eg. **Component A** is **UpdateRestaurant.jsx** and **component B** is **RestaurantList.jsx**. Also, note that there's no issue in sharing Context across components if they are parent or child of each other.
 
 ## Todo after completing project (Stuff that is missing from this tutorial as compared to a real project)
 1. No defining of schema for initializing the database (that was done manually in psql which is not ideal). We can do this using migrations.

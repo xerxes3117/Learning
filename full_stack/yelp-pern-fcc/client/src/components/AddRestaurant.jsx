@@ -15,7 +15,6 @@ function AddRestaurant() {
     try {
       const resp = await addRestaurantAPI(restaurant)
       setRestaurants([...restaurants, resp.data.restaurant])
-      console.log(resp)
     } catch (error) {
       console.error(error)
     }
