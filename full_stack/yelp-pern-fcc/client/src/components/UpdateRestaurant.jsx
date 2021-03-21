@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom';
-import {fetchRestaurantAPI} from '../services/Restaurant-API'
+import {fetchRestaurantAPI, updateRestaurantAPI} from '../services/Restaurant-API'
+import {useHistory, useParams} from 'react-router-dom';
 
 export default function UpdateRestaurant() {
   const {id} = useParams()
   const [name, setName] = useState('')
   const [location, setLocation] = useState('')
   const [priceRange, setPriceRange] = useState('')
+  let history = useHistory()
 
   useEffect(() => {
     const fetchRestaurant = async (id) => {
@@ -26,8 +27,14 @@ export default function UpdateRestaurant() {
     fetchRestaurant(id);
   }, [])
 
-  const updateRestaurantHandler = async () => {
-
+  const updateRestaurantHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await updateRestaurantAPI({name, location, price_range: priceRange}, id);
+      history.push('/');
+    } catch (error) {
+      console.error(error)
+    }
   }
   
   return (

@@ -21,7 +21,8 @@ function RestaurantList() {
       fetchRestaurants();
   }, [])
 
-  const deleteRestaurantHandler = async (id) => {
+  const deleteRestaurantHandler = async (e, id) => {
+    e.stopPropagation()
     try {
       const response = await deleteRestaurantAPI(id)
       if(response.status === 204) {
@@ -33,8 +34,13 @@ function RestaurantList() {
     }
   }
 
-  const updateRestaurantHandler = async (id) => {
+  const updateRestaurantHandler = async (e, id) => {
+    e.stopPropagation()
     history.push(`/restaurants/${id}/update`);
+  }
+
+  const handleRestaurantSelect = (id) => {
+    history.push(`/restaurants/${id}`);
   }
 
   return (
@@ -52,16 +58,16 @@ function RestaurantList() {
         </thead>
         <tbody>
           {restaurants && restaurants.map(({id, name, location, price_range}) => (
-            <tr key={id}>
+            <tr key={id} onClick={() => handleRestaurantSelect(id)}>
               <td>{name}</td>
               <td>{location}</td>
               <td>{"$".repeat(price_range)}</td>
               <td>Rating</td>
               <td>
-                <button className="btn btn-warning" onClick={() => updateRestaurantHandler(id)}>Update</button>
+                <button className="btn btn-warning" onClick={(e) => updateRestaurantHandler(e, id)}>Update</button>
               </td>
               <td>
-                <button className="btn btn-danger" onClick={() => deleteRestaurantHandler(id)}>Delete</button>
+                <button className="btn btn-danger" onClick={(e) => deleteRestaurantHandler(e, id)}>Delete</button>
               </td>
             </tr>
           ))}
