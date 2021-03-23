@@ -19,11 +19,14 @@ module.exports = function(app, db) {
   //Get a particular restaurant by id
   app.get('/api/v1/restaurants/:id', async (req, res) => {
     try {
-      const result = await db.query('select * from restaurants where id = $1', [req.params.id])
+      const restaurant = await db.query('select * from restaurants where id = $1', [req.params.id])
+      const reviews = await db.query('select * from reviews where restaurant_id = $1', [req.params.id])
+
       res.status(200).json({
-        status: result.rows.length > 0 ? 'success' : 'not found',
+        status: restaurant.rows.length > 0 ? 'success' : 'not found',
         data: {
-          restaurant : result.rows.length > 0 ? result.rows[0] : 'No restaurant found with this id'
+          restaurant : restaurant.rows.length > 0 ? restaurant.rows[0] : 'No restaurant found with this id',
+          reviews: reviews.rows
         }
       })
     } catch (err) {
@@ -34,7 +37,6 @@ module.exports = function(app, db) {
   //Create a new restaurant
   app.post('/api/v1/restaurants', async (req, res) => {
     try {
-      console.log(req.body)
       const {name, location, price_range} = req.body;
       const results = await db.query('insert into restaurants (name, location, price_range) values($1, $2, $3) returning *', [name, location, price_range])
 
@@ -73,6 +75,20 @@ module.exports = function(app, db) {
     try {
       const result = await db.query('delete from restaurants where id = $1 returning *', [req.params.id]);
       res.status(204).send()
+    } catch (error) {
+      console.log(err)
+    }
+  })
+  
+  app.post("/api/v1/restaurants/:id/addReview", async (req, res) => {
+    try {
+      const {name, review_text, rating} = req.body;
+      const result = await db.query('insert into reviews (restaurant_id, name, review_text, rating) values($1, $2, $3, $4) returning *', [req.params.id, name, review_text, rating])
+  
+      res.status(201).json({
+        status: 'success',
+        data: result.rows[0]
+      })
     } catch (error) {
       console.log(err)
     }
