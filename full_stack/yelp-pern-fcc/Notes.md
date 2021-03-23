@@ -1,5 +1,5 @@
 ## Learning
-1. Use **parametrized sql** queries to prevent **SQL injection**
+1. Use **parametrized sql** queries to prevent **SQL injection**. For example check how we are making db queries in restaurant controller file. We could have done this using string concatenation also but that can cause **SQL injection** (see https://www.hacksplaining.com/prevention/sql-injection, https://youtu.be/mo8RsfhtUG8, https://www.w3schools.com/sql/sql_injection.asp)
 2. Don't wrap callback function of react hook in async as hook callback does not expect a promise (https://www.robinwieruch.de/react-hooks-fetch-data)
 3. **Every component** in <Route component=...> has access to **history** API of react-router as a prop which can be used to navigate to other routes 
    For other nested/child components, we can use useHistory() hook to get access to same history API
