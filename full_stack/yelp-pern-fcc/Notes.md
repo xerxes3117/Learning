@@ -10,7 +10,7 @@
 ## Todo after completing project (Stuff that is missing from this tutorial as compared to a real project)
 1. No defining of schema for initializing the database (that was done manually in psql which is not ideal). Explore how can we can do this using migrations?
 2. Better error handling for db queries and reponses (eg. what if in delete API incoming ID doesn't exist in db)
-3. Regarding **point 4** in **Learning** above. Would there be same issue in **Redux** too
+3. Regarding **point 5** in **Learning** above. Would there be same issue in **Redux** too
 4. Think of other ways to implement star rating component. Also, build it so we can rate by hovering over stars rather than entering rating value in input. Can we do something with css masking?
 5. Confirm regarding point 4 in Learning section above: Would setState in class components cause re-render if previous and new values is same??
 
