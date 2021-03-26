@@ -30,7 +30,10 @@ function RestaurantDetailpage() {
     <div>
       {selectedRestaurant && (
         <>
-          <h1 className="text-center display-1">{selectedRestaurant.restaurant.name}</h1>
+          <div className="text-center">
+            <h1 className="display-1">{selectedRestaurant.restaurant.name}</h1>
+            {+selectedRestaurant.restaurant.total_reviews > 0 && <StarRating rating={selectedRestaurant.restaurant.avg_rating} />}
+          </div>
           <div className="mt-3">
             <Reviews reviews={selectedRestaurant.reviews}/>
             <AddReview />

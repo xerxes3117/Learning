@@ -3,7 +3,7 @@ module.exports = function(app, db) {
   //Get all restaurants
   app.get('/api/v1/restaurants', async (req, res) => {
     try {
-      const results = await db.query('select * from restaurants');
+      const results = await db.query('select r1.*, trunc(avg(r2.rating), 2) as avg_rating, count(r2.rating) as total_reviews from restaurants r1 left join reviews r2 on r1.id = r2.restaurant_id group by r1.id');
       res.status(200).json({
         status: 'success',
         results: results.rows.length,
@@ -19,7 +19,7 @@ module.exports = function(app, db) {
   //Get a particular restaurant by id
   app.get('/api/v1/restaurants/:id', async (req, res) => {
     try {
-      const restaurant = await db.query('select * from restaurants where id = $1', [req.params.id])
+      const restaurant = await db.query('select r1.*, trunc(avg(r2.rating), 2) as avg_rating, count(r2.rating) as total_reviews from restaurants r1 left join reviews r2 on r1.id = r2.restaurant_id where r1.id = $1 group by r1.id;', [req.params.id])
       const reviews = await db.query('select * from reviews where restaurant_id = $1', [req.params.id])
 
       res.status(200).json({
@@ -76,7 +76,7 @@ module.exports = function(app, db) {
       const result = await db.query('delete from restaurants where id = $1 returning *', [req.params.id]);
       res.status(204).send()
     } catch (error) {
-      console.log(err)
+      console.log(error)
     }
   })
   

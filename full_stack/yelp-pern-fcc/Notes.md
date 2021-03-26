@@ -13,6 +13,7 @@
 3. Regarding **point 5** in **Learning** above. Would there be same issue in **Redux** too
 4. Think of other ways to implement star rating component. Also, build it so we can rate by hovering over stars rather than entering rating value in input. Can we do something with css masking?
 5. Confirm regarding point 4 in Learning section above: Would setState in class components cause re-render if previous and new values is same??
+6. Not able to delete restaurants with reviews. Showing foreign key constraints error.
 
 ## Doubts
 1. We allowed cors on the server side. But how does this work in production? Does everything run on same port and cors is not required?

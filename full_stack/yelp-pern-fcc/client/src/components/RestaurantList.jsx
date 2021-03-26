@@ -2,6 +2,7 @@ import React, {useEffect, useContext} from 'react'
 import { RestaurantsContext } from '../context/RestaurantsContext';
 import {fetchRestaurantsAPI, deleteRestaurantAPI} from '../services/Restaurant-API'
 import {useHistory} from 'react-router-dom';
+import StarRating from './StarRating';
 
 function RestaurantList() {
 
@@ -24,6 +25,7 @@ function RestaurantList() {
   const deleteRestaurantHandler = async (e, id) => {
     e.stopPropagation()
     try {
+      console.log("deleting")
       const response = await deleteRestaurantAPI(id)
       if(response.status === 204) {
         const updatedRestaurants = [...restaurants].filter(restaurant => restaurant.id !== id);
@@ -57,12 +59,17 @@ function RestaurantList() {
           </tr>
         </thead>
         <tbody>
-          {restaurants && restaurants.map(({id, name, location, price_range}) => (
+          {restaurants && restaurants.map(({id, name, location, price_range, avg_rating, total_reviews}) => (
             <tr key={id} onClick={() => handleRestaurantSelect(id)}>
               <td>{name}</td>
               <td>{location}</td>
               <td>{"$".repeat(price_range)}</td>
-              <td>Rating</td>
+              <td>{+total_reviews > 0 ? 
+                ( <>
+                    <StarRating rating={avg_rating} />
+                    <span className="text-warning ml-1" style={{marginLeft: "0.5rem"}}>({+total_reviews})</span>
+                  </>) :
+                  "0 Reviews"}</td>
               <td>
                 <button className="btn btn-warning" onClick={(e) => updateRestaurantHandler(e, id)}>Update</button>
               </td>
