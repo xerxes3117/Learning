@@ -1,6 +1,9 @@
-//Time complexity  : O(logN)
-//Space complexity : O(1)
-function binarySearch(arr, el){
+/**
+ * Iterative binary search
+ * Time complexity  : O(logN)
+ * Space complexity : O(1)
+ */
+function binarySearchIterative(arr, el){
   let low = 0, high = arr.length -1;
   while(low <= high){
     let mid = low + Math.floor((high - low) / 2);
@@ -16,15 +19,30 @@ function binarySearch(arr, el){
   return -1
 }
 
+/**
+ * Recursive binary search
+ * Time complexity : O(logN)
+ * Space complexity : O(logN) because of logN recursive calls logN stack frames are created
+ */
+
+function binarySearchRecursive(arr, el, low, high){
+  //Reason why use below formula for mid rather than (low + high)/2 : Go to bottom -> https://www.geeksforgeeks.org/binary-search/ 
+  let mid = low + Math.floor((high - low)/2)
+  if(low > high){
+    return -1
+  }
+  if(arr[mid] == el){
+    return mid
+  } else if(arr[mid] > el){
+    high = mid -1;
+  } else {
+    low = mid +1;
+  }
+  return binarySearchRecursive(arr, el, low, high);
+}
+
+
+//Test cases
 let arr = [1, 10, 20, 47, 59, 63, 75, 88, 99, 107, 120, 133, 155, 162, 176]
-console.log(arr1.length, binarySearch(arr1, 0))
-
-console.log(search([7,8,0,1,2,4,5,6], 8))
-console.log(search([7,8,0,1,2,4,5,6], 5))
-console.log(search([7,8,0,1,2,4,5,6], 0))
-
-console.log(search([2,4,5,6,7,0,1], 7))
-console.log(search([2,4,5,6,7,0,1], 4))
-console.log(search([2,4,5,6,7,0,1], 0))
-
-console.log(search([7,0,1,2,4,5,6], 7))
+console.log(arr.length, binarySearchIterative(arr, 176))
+console.log(arr.length, binarySearchRecursive(arr, 176, 0, arr.length -1))
