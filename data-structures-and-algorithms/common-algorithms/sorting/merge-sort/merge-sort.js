@@ -1,3 +1,8 @@
+/**
+ * Recursive Approach (also known as Top down approach)
+ * Time complexity  : O(NlogN)
+ * Space complexity : O(N)
+ */
 function mergeSort(arr) {
     //Base case
     if(arr.length <= 1) {
