@@ -13,22 +13,22 @@ function mergeSort(arr) {
  }
  
  //Merge function to merge 2 arrays in sorted order
- function merge(left, right) {
+ function merge(leftArray, rightArray) {
      let arrMerged = [];
-     //Loop through left and right array and append the lower value to resulting array
-     for(i = 0, j = 0; i < left.length && j < right.length;){
-        if(left[i] < right[j]) {
-          arrMerged.push(left[i])
+     //Loop through leftArray and rightArray and append the lower value to resulting array
+     for(i = 0, j = 0; i < leftArray.length && j < rightArray.length;){
+        if(leftArray[i] < rightArray[j]) {
+          arrMerged.push(leftArray[i])
           i++;         
         } else {
-          arrMerged.push(right[j])
+          arrMerged.push(rightArray[j])
           j++;
         }
      }
      //Append the remaining elements from both arrays
      return arrMerged
-           .concat(left.slice(i))
-           .concat(right.slice(j)); 
+           .concat(leftArray.slice(i))
+           .concat(rightArray.slice(j)); 
  }
 
  let arr = [12,323,12,422,212,545,321,121,353,121,6565,1212,343,121,441,1,145]
