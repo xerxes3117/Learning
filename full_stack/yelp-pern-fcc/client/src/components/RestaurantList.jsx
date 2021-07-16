@@ -6,6 +6,8 @@ import StarRating from './StarRating';
 
 function RestaurantList() {
 
+  console.log("env variables:", process.env)
+
   const {restaurants, setRestaurants} = useContext(RestaurantsContext);
   let history = useHistory()
 
