@@ -1,7 +1,7 @@
 /**
  * Notes
  * 1) For insertion we use percolateUp and for removal we use percolateDown
- * 2) Note that while percolating any element down we have to swap with largest of element (parent) and it's 2 children. This has to be done to make sure map heap is maintained
+ * 2) Note that while percolating any element down we have to swap with largest of element (parent) and it's 2 children. This has to be done to make sure max heap is maintained
  * 3) No need to do this while percolating any element up and swapping with it's parent (because in already maintained heap parent would always be larger than below nodes) 
  */
 
