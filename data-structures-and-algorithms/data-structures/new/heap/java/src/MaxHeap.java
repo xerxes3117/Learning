@@ -1,3 +1,7 @@
+/**
+ * @todo Add documentation and time complexity of all operations
+ * @todo Test with duplicate values
+ */
 public class MaxHeap {
     private int[] heap;
     private int size;
@@ -42,11 +46,14 @@ public class MaxHeap {
             return;
         }
         int maxPos = pos;
-        if (heap[maxPos] < heap[leftChild(pos)]) {
-            maxPos = 2 * pos;
-        }
-        if (heap[maxPos] < heap[rightChild(pos)]) {
+
+        // First condition is added to make sure we don't swap with deleted element
+        // The deleted element is currently present at last position in heap
+        if (leftChild(pos) < size && heap[maxPos] < heap[leftChild(pos)]) {
             maxPos = 2 * pos + 1;
+        }
+        if (rightChild(pos) < size &&  heap[maxPos] < heap[rightChild(pos)]) {
+            maxPos = 2 * pos + 2;
         }
         if (pos != maxPos) {
             swap(pos, maxPos);
@@ -65,16 +72,24 @@ public class MaxHeap {
     }
 
     public int leftChild(int pos) {
-        return 2 * pos;
+        return 2 * pos + 1;
     }
 
     public int rightChild(int pos) {
-        return 2 * pos + 1;
+        return 2 * pos + 2;
     }
 
     public void printHeap() {
         for (int i = 0; i < size; i++) {
             System.out.print("   " + heap[i]);
+        }
+        System.out.println();
+        for (int i = 0; i <= size / 2; i++) {
+            System.out.print(
+                    " PARENT : " + heap[i]
+                            + " LEFT CHILD : " + heap[2 * i + 1]
+                            + " RIGHT CHILD :" + heap[2 * i + 2]);
+            System.out.println();
         }
     }
 }
