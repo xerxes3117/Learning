@@ -21,24 +21,6 @@ Function.prototype.myBindWithoutApply = function (context, ...args) {
   };
 };
 
-let customContext = { a: 1, b: 2 };
-function testFunc(home, state, country) {
-  console.log("final context is: ", this , " home: ", home, " state: ", state, " country: ", country);
-}
-
-console.log("calling inbuilt bind..");
-var boundFunc = testFunc.bind(customContext, "dwarka", "delhi");
-boundFunc("india");
-
-console.log("calling mybind..");
-var boundFuncCustom1 = testFunc.myBind(customContext, "dwarka", "delhi");
-boundFuncCustom1("india");
-
-console.log("calling myBindWithoutApply..");
-var boundFuncCustom2 = testFunc.myBindWithoutApply(customContext, "dwarka", "delhi");
-boundFuncCustom2("india");
-
-
 // ---------------------------------------- Call polyfill -------------------------------------------------------------- //
 Function.prototype.myCall = function (context, ...args) {
   const tempContext = Object.create(context || null);
@@ -57,3 +39,21 @@ Function.prototype.myApply = function (context, args) {
   tempContext.fnToCall = this;
   tempContext.fnToCall(...args);
 };
+
+// ---------------------------------------- Tests -------------------------------------------------------------- //
+let customContext = { a: 1, b: 2 };
+function testFunc(home, state, country) {
+  console.log("final context is: ", this , " home: ", home, " state: ", state, " country: ", country);
+}
+
+console.log("calling inbuilt bind..");
+var boundFunc = testFunc.bind(customContext, "dwarka", "delhi");
+boundFunc("india");
+
+console.log("calling mybind..");
+var boundFuncCustom1 = testFunc.myBind(customContext, "dwarka", "delhi");
+boundFuncCustom1("india");
+
+console.log("calling myBindWithoutApply..");
+var boundFuncCustom2 = testFunc.myBindWithoutApply(customContext, "dwarka", "delhi");
+boundFuncCustom2("india");
