@@ -139,3 +139,85 @@ function x() {
 
 x()
 // y()
+
+dt1 = Date.now()
+setTimeout(function abc() {
+  console.log("1 took:", Date.now() - dt1, " milliseconds")
+    setTimeout(function def() {
+      console.log("2 took:", Date.now() - dt1, " milliseconds")
+        setTimeout(function ghi() {
+          console.log("3 took:", Date.now() - dt1, " milliseconds")
+            setTimeout(function jkl() {
+              console.log("4 took:", Date.now() - dt1, " milliseconds")
+                setTimeout(function mno() {
+                    console.log("5 took:", Date.now() - dt1, " milliseconds")
+                    setTimeout(function pqr() {
+                      console.log("6 took:", Date.now() - dt1, " milliseconds")
+                      setTimeout(function stu() {
+                        console.log("7 took:", Date.now() - dt1, " milliseconds")
+                        setTimeout(function vwx() {
+                          console.log("8 took:", Date.now() - dt1, " milliseconds")
+                          setTimeout(function yz() {
+                            console.log("9 took:", Date.now() - dt1, " milliseconds")
+                          }, 0)
+                        }, 0)
+                      }, 0)
+                    }, 0)
+                }, 0)
+            }, 0)
+        }, 0)
+    }, 0)
+}, 0)
+
+
+//Non optimized
+let i = 0;
+
+let start = Date.now();
+let prev = Date.now()
+let totalCalls = 0;
+function count() {
+  totalCalls++
+  // do a piece of the heavy job (*)
+  do {
+    i++;
+  } while (i % 1e6 != 0);
+
+  if (i == 1e9) {
+    alert("Done in " + (Date.now() - start) + 'ms, total calls: ' + totalCalls);
+  } else {
+    console.log("re-scheduling after", (Date.now() - prev), " milliseconds")
+    prev = Date.now()
+    setTimeout(count); // schedule the new call (**)
+  }
+
+}
+
+count();
+
+//Optimized
+let i = 0;
+
+let start = Date.now();
+let prev = Date.now()
+let totalCalls = 0;
+function count() {
+  totalCalls++  
+  // move the scheduling to the beginning
+  if (i < 1e9 - 1e6) {
+    setTimeout(count); // schedule the new call
+    console.log("re-scheduling after", (Date.now() - prev), " milliseconds")
+    prev = Date.now()
+  }
+
+  do {
+    i++;
+  } while (i % 1e6 != 0);
+
+  if (i == 1e9) {
+    alert("Done in " + (Date.now() - start) + 'ms, Total calls: ' + totalCalls);
+  }
+
+}
+
+count();
