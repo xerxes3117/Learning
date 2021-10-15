@@ -38,6 +38,22 @@ console.log("calling myBindWithoutApply..");
 var boundFuncCustom2 = testFunc.myBindWithoutApply(customContext, "dwarka", "delhi");
 boundFuncCustom2("india");
 
+
 // ---------------------------------------- Call polyfill -------------------------------------------------------------- //
+Function.prototype.myCall = function (context, ...args) {
+  const tempContext = Object.create(context || null);
+  tempContext.fnToCall = this;
+  tempContext.fnToCall(...args);
+};
+
 
 // ---------------------------------------- Apply polyfill -------------------------------------------------------------- //
+Function.prototype.myApply = function (context, args) {
+  if(!Array.isArray(args)){
+    console.log("CreateListFromArrayLike called on non-object")
+    return
+  }
+  const tempContext = Object.create(context || null);
+  tempContext.fnToCall = this;
+  tempContext.fnToCall(...args);
+};
