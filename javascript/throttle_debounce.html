@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+    <style>
+      input {
+        display: block;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body onresize="throttledFunc()">
+    Debounce normal: <input type="text" onkeypress="debouncedFunc(event)" />
+    Debounce immediate: <input type="text" onkeypress="debouncedFunc1(event)" />
+    Throttle: <input type="text" onkeypress="throttledFunc(event)" />
+    Lodash debounce : <input type="text" onkeypress="lodashDebounceFunc(event)" />
+  </body>
+
+  <script>
+    function throttle(fn, delay) {
+      let isThrottled = true;
+      return function () {
+        if (isThrottled) {
+          fn();
+          isThrottled = false;
+          setTimeout(() => {
+            isThrottled = true;
+          }, delay);
+        }
+      };
+    }
+
+    function debounce(fn, delay, immediate) {
+      let timeout;
+      return function () {
+        var callNow = immediate && !timeout;
+
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          timeout = null;
+          
+          if(!immediate) {
+            fn.apply(this, arguments)
+          }
+        }, delay)
+
+        if(callNow) fn.apply(this, arguments);
+      }
+    }
+
+    throttledFunc = throttle(someFunc, 2000);
+    debouncedFunc = debounce(someFunc, 500);
+    debouncedFunc1 = debounce(someFunc, 500, true);
+    lodashDebounceFunc = _.debounce(someFunc, 500) //trailing by default
+
+    function someFunc(e) {
+      console.log("calling function..");
+    }
+  </script>
+</html>
