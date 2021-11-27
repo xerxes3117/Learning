@@ -1,4 +1,7 @@
-//https://codeburst.io/perpetual-currying-in-javascript-5ae1c749adc5
+//Todo:
+//1) In 2nd implementation, make the function more generic in terms of arguments (i.e. should be callable like curried(1,3,4)(2,3)())
+//2) In 2nd implementation, make the function more generic. The function should work for any function unlike the function sum also (eg. a function with more arguments)
+//3) Go through - https://codeburst.io/perpetual-currying-in-javascript-5ae1c749adc5
 
 // ------------------------------------------- Using + unary operator ----------------------------------------------------//
 function curryFunc(func){
