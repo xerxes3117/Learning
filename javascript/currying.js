@@ -58,12 +58,12 @@ console.log(curried(1)(2)(3)(4)())
 
 function curryFunc(func){
   const innerFn = function(...outerArgs){
-    let outerSum = outerArgs.reduce(func)
+    let cumulatedVal = outerArgs.reduce(func)
     return function(...innerArgs) {
       if(innerArgs.length == 0){
-        return outerSum
+        return cumulatedVal
       } else {
-        return innerFn(outerSum, ...innerArgs)
+        return innerFn(cumulatedVal, ...innerArgs)
       }
     }
   }
