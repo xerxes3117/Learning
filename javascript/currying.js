@@ -59,24 +59,23 @@ console.log(curried(1)(2)(3)(4)())
 function curryFunc(func){
   const innerFn = function(...outerArgs){
     let outerSum = outerArgs.reduce(func)
-      return function(...innerArgs) {
-        if(innerArgs.length == 0){
-            return outerSum
-          } else {
-            let innerSum = innerArgs.reduce(func)
-            return innerFn(func(outerSum, innerSum))
-          }
+    return function(...innerArgs) {
+      if(innerArgs.length == 0){
+        return outerSum
+      } else {
+        return innerFn(outerSum, ...innerArgs)
       }
+    }
   }
   return innerFn
 }
 
 function multiply(a, b){
-return a * b
+  return a * b
 }
 
 function add(a, b){
-return a + b
+  return a + b
 }
 
 let curriedMul = curryFunc(multiply);
