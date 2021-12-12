@@ -1,3 +1,5 @@
+//Memoize function based on argument. If same arguments provided, the function should not compute the values again
+
 function memoGenerator(fn) {
   let cacheMap = new Map()
 
