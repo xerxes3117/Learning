@@ -2,7 +2,8 @@
 //1) map and filter: add support for 2nd argument also (i.e. context)
 //2) map and filter: add support for using map generically (i.e. with other types like Strings, Objects etc.) 
 
-//Map
+
+// ----------------------------------------- MAP ------------------------------------------------------------//
 Array.prototype.fbMap = function(callbackFunc){
 	let out = []
   /**
@@ -21,7 +22,8 @@ Array.prototype.fbMap = function(callbackFunc){
   return out
 }
 
-//Filter
+
+// ----------------------------------------- FILTER ------------------------------------------------------------//
 Array.prototype.fbFilter = function(callbackFunc){
 	let out = []
   const len = this.length;
@@ -31,7 +33,8 @@ Array.prototype.fbFilter = function(callbackFunc){
   return out
 }
 
-//Reduce
+
+// ----------------------------------------- REDUCE ------------------------------------------------------------//
 Array.prototype.fbReduce = function(callbackFunc, initial){
 	let out = initial, k = 0;
   const len = this.length; 
@@ -43,6 +46,11 @@ Array.prototype.fbReduce = function(callbackFunc, initial){
     	out = callbackFunc(out, this[i])
     }
     return out
+}
+
+// ----------------------------------------- SORT ------------------------------------------------------------//
+Array.prototype.fbSort = function(callbackFunc, initial){
+  //Add code here...
 }
 
 // ---------------------------------------- Tests -------------------------------------------------------------- //
