@@ -38,14 +38,14 @@ Array.prototype.fbFilter = function(callbackFunc){
 Array.prototype.fbReduce = function(callbackFunc, initial){
 	let out = initial, k = 0;
   const len = this.length; 
-    if(!out){
-    	out = arr[0]
-      k = 1
-    }
-    for(let i = k; i < Math.min(len, this.length); i++){
-    	out = callbackFunc(out, this[i])
-    }
-    return out
+  if(!out){
+    out = arr[0]
+    k = 1
+  }
+  for(let i = k; i < Math.min(len, this.length); i++){
+    out = callbackFunc(out, this[i])
+  }
+  return out
 }
 
 // ----------------------------------------- SORT ------------------------------------------------------------//
