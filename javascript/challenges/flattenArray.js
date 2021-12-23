@@ -1,5 +1,6 @@
 //Follow up:
-//Can we do this without using separate helper function
+//1) Can we do this without using separate helper function (use concat to add to out array i.e. out = out.concat(flattenArray(arr)))
+//2) How to do this using inbuilt functions (array.flat, flatMap)
 
 function flattenArray(arr){
 	let out = []
