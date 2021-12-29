@@ -1,3 +1,5 @@
+//Pubsub is a common pattern used in JS event listerners, Redux etc.
+
 class PubSub {
 	constructor(){
     this.tracker = {}
