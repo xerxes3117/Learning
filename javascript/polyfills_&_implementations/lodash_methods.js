@@ -1,4 +1,4 @@
-//Implement lodash.get function https://lodash.com/docs/4.17.15#get 
+//------------------------------------------ Implement lodash.get function https://lodash.com/docs/4.17.15#get --------------------------------------------------// 
 
 //Implementations 1
 function getObjectAtPath1(obj, path){
@@ -13,8 +13,6 @@ function getObjectAtPath1(obj, path){
   }
   return currVal
 }
-
-//---------------------------------------------------------------------------------------------------------------------------------------------------- 
 
 //Implementations 2 (using reduce)
 
@@ -48,3 +46,7 @@ console.log(getObjectAtPath2(inputObject, 'a.c')); // undefined
 console.log(getObjectAtPath2(inputObject, 'a.d.c')); // undefined
 console.log(getObjectAtPath2(inputObject, 'a.b.d')); // 2
 console.log(getObjectAtPath2(inputObject, 'a.b.f')); // undefined
+
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------- //
