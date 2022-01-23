@@ -16,7 +16,7 @@ function getObjectAtPath1(obj, path){
 
 //Implementations 2 (using reduce)
 
-//In below solution arr.splice(0) removes all elements form pathKeys array thus stopping the reduce as array has no elements left
+//In below solution arr.splice(0) removes all elements from pathKeys array thus stopping the reduce as array has no elements left
 //Note that this will modify the existing pathKeys array
 function getObjectAtPath2(obj, path){
 	let pathKeys = path.split(".")
@@ -49,4 +49,33 @@ console.log(getObjectAtPath2(inputObject, 'a.b.f')); // undefined
 
 
 
-//---------------------------------------------------------------------------------------------------------------------------------------------------- //
+//--------------------------------------------------------------- Implement lodash.keyBy function https://lodash.com/docs/#keyBy ------------------------------------------------------------------------------------- //
+
+function keyBy(collection, iteratee){
+	let outObj = {}
+ 	
+  for(const val of collection){
+  	const generatedKey = typeof iteratee == 'function' ? iteratee(val) : val[iteratee]
+    outObj[generatedKey] = val
+  }
+  
+  return outObj
+}
+
+//Testcases
+var array = [
+  { 'dir': 'left', 'code': 97 },
+  { 'dir': 'right', 'code': 100 }
+];
+ 
+console.log(keyBy(array, function(o) {
+  return String.fromCharCode(o.code);
+}));
+// => { 'a': { 'dir': 'left', 'code': 97 }, 'd': { 'dir': 'right', 'code': 100 } }
+ 
+console.log(keyBy(array, 'dir'));
+// => { 'left': { 'dir': 'left', 'code': 97 }, 'right': { 'dir': 'right', 'code': 100 } }
+
+
+
+//--------------------------------------------------------------- Implement lodash.keyBy function https://lodash.com/docs/#keyBy ------------------------------------------------------------------------------------- //
