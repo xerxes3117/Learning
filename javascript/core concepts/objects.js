@@ -19,7 +19,7 @@ for(const key in obj) {
 //Defining non-enumerable common property on all instances of a native class
 Object.defineProperty(Object.prototype, 'test2', {
   value: 2, 
-  enumerable: false
+  enumerable: false //No need to mention this explicitly also as this is false by default for any property defined using Object.defineProperty
 })
 
 //Note that test2 is not looped over as they are defined as non-enumerable
