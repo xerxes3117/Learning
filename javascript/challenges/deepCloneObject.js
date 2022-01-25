@@ -3,6 +3,8 @@
 // 1) https://www.digitalocean.com/community/tutorials/copying-objects-in-javascript 
 // 2) https://github.com/sadanandpai/javascript-code-challenges/blob/main/challenges/objects-challenges.md#q3 
 // 3) https://stackoverflow.com/a/18089155/8425685 
+//@todo:
+// 1) how to do the same if there are circular references present in the object
 
 // -------------------------------- Method 1 : Using JSON.stringify -------------------------------//
 
