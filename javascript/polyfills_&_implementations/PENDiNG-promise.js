@@ -81,7 +81,7 @@ let promise3 = new myPromise((resolve, reject) => {
 
 promise3.then(res => res*2).then(res => console.log(res))
 
-//Rejected promise
+//Rejected promise with catch chaining
 let promise4 = new myPromise((resolve, reject) => {
 	//executer
 	setTimeout(() => {
@@ -89,4 +89,8 @@ let promise4 = new myPromise((resolve, reject) => {
     }, 3000)
 })
 
-promise4.then(res => res*2).then(res => console.log(res)).catch(error => console.log(error))
+promise4
+    .then(res => res*2)
+    .then(res => console.log(res))
+    .catch(error => 'promise rejected with error')
+    .catch(error => console.log(error))
