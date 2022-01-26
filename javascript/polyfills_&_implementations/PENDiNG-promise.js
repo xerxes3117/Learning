@@ -1,6 +1,7 @@
 //@todo
 // 1) test this implementation by running all test cases
 // 2) add comments 
+// 3) add more methods from promise api(.resolve, .reject, .all, .race etc.)
 class myPromise {
 
     resolvedData;
