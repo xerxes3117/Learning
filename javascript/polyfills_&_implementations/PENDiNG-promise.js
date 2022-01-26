@@ -1,55 +1,45 @@
-class Promise {
-	
-	constructor(callback){
-    	this.promiseObj = {
-        	'state': 'pending',
-            'result': undefined
+class myPromise {
+
+    resolvedData;
+    isResolved = false;
+    thenFunc;
+
+    constructor(executor){
+        const resolve = (value) => {
+            this.resolvedData = value;
+            this.isResolved = true;
+
+            if(typeof this.thenFunc == 'function')
+                this.thenFunc(this.resolvedData)
         }
-        callback(
-        	this.resolve.bind(this), 
-            this.reject.bind(this)
-        )
+
+        executor(resolve)
     }
-    
-    resolve(value){
-    	this.promiseObj = {
-        	'state': 'fulfilled',
-            'result': value
+
+    then(callback){
+        this.thenFunc = callback;
+        if(this.isResolved){
+            this.thenFunc(this.resolvedData)
         }
-        this.then()
-    }
-    
-    reject(error){
-        this.promiseObj = {
-        	'state': 'rejected',
-            'result': error
-        }
-        this.then()
-    }
-    
-    then(successCallback, errorCallback){
-    	let result = this.promiseObj.result
-    	if(this.promiseObj.state == 'fulfilled')
-    		successCallback(result)
-        else if(this.promiseObj.state == 'rejected')
-        	errorCallback(result)
-    	return this
-    }
-    
-    catch(errorCallback){
-    	
-    }
-    
-    finally(){
-    	
     }
 }
 
-let promise = new Promise((resolve, reject) => {
+//Testcases
+
+//Synchronous promise execution
+let promise1 = new myPromise((resolve, reject) => {
+	//executer
+    resolve('hello')
+})
+
+promise1.then(res => console.log(res))
+
+//Async promise execution
+let promise2 = new myPromise((resolve, reject) => {
 	//executer
 	setTimeout(() => {
     	resolve('hello')
     }, 3000)
 })
 
-promise.then(res => console.log(res))
+promise2.then(res => console.log(res))
