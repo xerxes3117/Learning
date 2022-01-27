@@ -8,7 +8,7 @@ class MyEventEmitter {
 
   on(callbackFn) {
     if (typeof callbackFn === "function") {
-      this.tracker[callbackFn] = callbackFn; //This will fail if function 2 function bodies are same
+      this.tracker[callbackFn] = callbackFn; //This will fail if 2 function bodies are same
     } else {
       throw new Error("The passed value is not a function");
     }
