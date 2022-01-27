@@ -1,3 +1,6 @@
+//@todo:
+// 1) implement the object approach with a unique index for each function (see comment below)
+
 class MyEventEmitter {
   constructor() {
     this.tracker = {};
@@ -5,7 +8,7 @@ class MyEventEmitter {
 
   on(callbackFn) {
     if (typeof callbackFn === "function") {
-      this.tracker[callbackFn] = callbackFn;
+      this.tracker[callbackFn] = callbackFn; //This will fail if function 2 function bodies are same
     } else {
       throw new Error("The passed value is not a function");
     }
