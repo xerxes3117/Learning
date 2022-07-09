@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useCallback} from 'react'
 
-function Timer({duration, expireCb}) {
+function Timer({duration, expireCb, beforeResetCb}) {
 
   const [remainingDuration, setRemainingDuration] = useState(duration);
     
@@ -33,11 +33,17 @@ function Timer({duration, expireCb}) {
 
     const seconds = Math.floor(remaining/(1000));
 
-    return `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds `
+    return `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`
   }, [remainingDuration])
 
   return (
+    <>
       <div>Timer: {convertDurationToFormat(remainingDuration)}</div>
+      <button onClick={async () => {
+          await beforeResetCb()
+          setRemainingDuration(duration)
+        }}>Reset</button>
+    </>
   )
 }
 
