@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Timer from './Timer'
 
 function CountdownTimer() {
 
+  const [expired, setExpired] = useState(false);
+
   const expireCb = () => {
+    setExpired(true)
     console.log('Calling expireCb!')
   }
 
@@ -12,17 +15,19 @@ function CountdownTimer() {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve();
+        setExpired(false);
         console.log('callback completed, resetting timer!!')
       }, 3000)
     })
   }
 
   return (
-    <Timer 
-      duration={60*60*1000}
+    !expired ? <Timer 
+      duration={10*1000}
       expireCb={expireCb}
       beforeResetCb={beforeResetCb}
-    />
+    /> : 
+    <button onClick={async () => { await beforeResetCb()}}>Reset</button>
   )
 }
 
