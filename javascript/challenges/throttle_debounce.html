@@ -22,19 +22,23 @@
   </body>
 
   <script>
+    // In throttle delay is dependent on program logic directly & independent of user interaction
+    // Function will be called every 'delay' seconds irrespective of user action
     function throttle(fn, delay) {
-      let isThrottled = true;
+      let isThrottling = false; //we'll call the function for the initial call so initially function is not throttling
       return function () {
-        if (isThrottled) {
+        if (!isThrottling) {
           fn();
-          isThrottled = false;
+          isThrottling = true;
           setTimeout(() => {
-            isThrottled = true;
+            isThrottling = false;
           }, delay);
         }
       };
     }
 
+    // In debounce delay is dependent on user action directly. 
+    // Depending on user input frequency function maybe called immidietly or never
     function debounce(fn, delay, immediate) {
       let timeout;
       return function () {
