@@ -3,8 +3,9 @@
 	Guidelines:
   	1) Takes an array of promises and returns a new promise
   	2) The new promise resolves when all listed promises are resolved, and the array of their results becomes its result
-  	3) The order of the resulting array members is the same as in its source promises
-  	4) If any of the promises is rejected, the promise returned by Promise.all immediately rejects with that error
+    3) All the promises are executed in parallel and not sequentially
+  	4) The order of the resulting array members is the same as in its source promises
+  	5) If any of the promises is rejected, the promise returned by Promise.all immediately rejects with that error
 */
 Promise.customAll = (promiseArr) => {
   const resultArr = [];
