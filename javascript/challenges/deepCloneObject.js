@@ -5,6 +5,8 @@
 // 3) https://stackoverflow.com/a/18089155/8425685 
 //@todo:
 // 1) how to do the same if there are circular references present in the object
+// 2) Pending issues with approach 2:
+//    -  Arrays and function need to handled differently and individually. Currently you are not making clone in case of array and function object values. 
 
 // -------------------------------- Method 1 : Using JSON.stringify -------------------------------//
 
@@ -39,50 +41,51 @@ console.log(method2); // JSON.parse(JSON.stringify(obj))
 
 // -------------------------------- Method 2 : Using recursion -------------------------------//
 
-let objPerson = {
-	name: 'vaibhav',
-  phone: '98910066766',
-  occupation: {
-  	location: 'bangalore',
-    role: 'enginner'
-  },
-  details: {
-  	face: {
-    	eyes: 'black',
-      teeth: 'white'
-    },
-    middle: {
-    	dimensions: {
-      	waist: 60,
-        chest: 60
-      }
-    }
-  },
-  saySomething: function(){
-  	console.log('hello world')
-  }
-}
 
 function deepClone(obj){
-	if(!obj){
-  	return obj
+  if(!obj){
+    return obj
   }
 	let clone = {}
   
   for(const key in obj){
-  	if(typeof obj[key] !== "object" || Array.isArray(obj[key])){
-    	clone[key] = obj[key]
+    if(typeof obj[key] !== "object" || Array.isArray(obj[key])){
+      clone[key] = obj[key]
     } else {
-    	clone[key] = deepClone(obj[key])
+      clone[key] = deepClone(obj[key])
     }
   }
   return clone
 }
 
+
+// --------------------------- Testcases ------------------------ //
+let objPerson = {
+  name: 'vaibhav',
+  phone: '98910066766',
+  occupation: {
+    location: 'bangalore',
+    role: 'enginner'
+  },
+  details: {
+    face: {
+      eyes: 'black',
+      teeth: 'white'
+    },
+    middle: {
+      dimensions: {
+        waist: 60,
+        chest: 60
+      }
+    }
+  },
+  saySomething: function(){
+    console.log('hello world')
+  }
+}
 let clonedObj = deepClone(objPerson)
 console.log(clonedObj)
 
-// --------------------------- Testcases ------------------------ //
 //testing whether nested level properties are not affected in clone when changed in orignal
 objPerson.name = 'aman'
 objPerson.details.face.eyes = 'brown'

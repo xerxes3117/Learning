@@ -1,7 +1,8 @@
 //Todo:
-//1) In 2nd implementation, make the function more generic in terms of arguments (i.e. should be callable like curried(1,3,4)(2,3)())
+//1) IMP!! Check mindtickle Sep-2022 Round 1 question. None of approaches here are working for the testcases in that
 //2) In 2nd implementation, make the function more generic. The function should work for any function unlike the function sum also (eg. a function with more arguments)
 //3) Go through - https://codeburst.io/perpetual-currying-in-javascript-5ae1c749adc5
+//4) Check the solution (doesn't require unary): https://github.com/sadanandpai/javascript-code-challenges/blob/main/challenges/functions-challenges.md#q-create-a-function-which-takes-another-function-as-an-argument-and-makes-it-eligible-for-currying-or-partial-application
 
 // ------------------------------------------- Using + unary operator ----------------------------------------------------//
 function curryFunc(func){
