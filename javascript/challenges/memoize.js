@@ -1,6 +1,7 @@
 //Memoize function based on argument. If same arguments provided, the function should not compute the values again
-// Improvements:
-// 1) In solution 1), use fn.apply(this, ...args) instead of directly calling fn(...args). This way if we can use memo for object methods too
+// Todo:
+// 1) See if this is a different question? -> https://youtu.be/A9wQBAipiVo 
+// 2) In solution 1), use fn.apply(this, ...args) instead of directly calling fn(...args). This way if we can use memo for object methods too
 
 // ----------------------------------------- 1) Using JSON.stringify ------------------------------------------------------------//
 function memoGeneratorUsingJSONStringify(fn) {
