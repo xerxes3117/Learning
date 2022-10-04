@@ -1,7 +1,12 @@
+//Resources:
+// 1) Vishal youtube tutorial: 
+      // Part 1: https://youtu.be/TZZPfEO4s7Y
+      // Part 2: https://youtu.be/FUfVXeUpSxc
+
 //@todo
 // 1) test this implementation by running all test cases
 // 2) add comments 
-// 3) add more methods from promise api(.resolve, .reject, .all, .race etc.)
+// 3) add Static methods from Promise api(.resolve, .reject, .all, .race etc.)
 class myPromise {
 
     resolvedData;
@@ -76,7 +81,7 @@ promise2.then(res => console.log(res))
 let promise3 = new myPromise((resolve, reject) => {
 	//executer
 	setTimeout(() => {
-    	resolve('hello')
+    	resolve(20)
     }, 3000)
 })
 
