@@ -1,18 +1,13 @@
 /**
-*
 * TaskRunner
-* - Perform tasks sequentially
-*
-* 1. retries
-* 2. timeouts
-* 3. concurrency
-*
+* - Perform tasks sequentially. Further features:
+*   1. retries
+*   2. timeouts
+*   3. concurrency
 */
 // Solutions: 
 // - https://stackoverflow.com/questions/51850236/javascript-scheduler-implementation-using-promises 
 // - Somewhat similar: https://github.com/sadanandpai/javascript-code-challenges/blob/main/challenges/async-challenges.md#q-execute-an-array-of-asynchronous-functions-one-after-the-other-in-sequence-using-callbacks
-
-//INCOMPLETE RIGHT NOW!!!
 
 class TaskRunner {
 
