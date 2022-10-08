@@ -1,3 +1,5 @@
+//LEVEL: MEDIUM
+
 //Create deep clone of object
 //Resources:
 // 1) https://www.digitalocean.com/community/tutorials/copying-objects-in-javascript 
@@ -5,10 +7,23 @@
 // 3) https://stackoverflow.com/a/18089155/8425685 
 //@todo:
 // 1) how to do the same if there are circular references present in the object
-// 2) Pending issues with approach 2:
+// 2) Pending issues with approach 3:
 //    -  Arrays and function need to handled differently and individually. Currently you are not making clone in case of array and function object values. 
 
-// -------------------------------- Method 1 : Using JSON.stringify -------------------------------//
+
+// -------------------------------- Method 1 : Object.assign (Clones only at top level) -------------------------------//
+var student1 ={ 
+  name : "Manish",
+  company : "Gfg",
+  info: {
+    address: "delhi",
+    phone: "981199119"
+  }
+}
+var student2 =  { ...student1 } ;
+var student4 = Object.assign({} ,student1) ;
+
+// -------------------------------- Method 2 : Using JSON.stringify -------------------------------//
 
 //This approach works only for non-method properties. Methods are not copied in clone because methods also contain a scope with them (see below code for example)
 //See: https://stackoverflow.com/a/18089155/8425685
@@ -39,7 +54,7 @@ console.log(method2); // JSON.parse(JSON.stringify(obj))
 }
 */
 
-// -------------------------------- Method 2 : Using recursion -------------------------------//
+// -------------------------------- Method 3 : Using recursion -------------------------------//
 
 
 function deepClone(obj){

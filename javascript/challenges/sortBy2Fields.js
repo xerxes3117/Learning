@@ -1,3 +1,5 @@
+//LEVEL: EASY
+
 //Sort an array of objects by 2 fields in order of precedence
 //i.e. if highest precedence field (eg. price fields in below example) is equal sort by 2nd highest precedence field (h_id below)
 

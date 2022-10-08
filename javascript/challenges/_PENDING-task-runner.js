@@ -1,3 +1,5 @@
+//LEVEL: HARD
+
 /**
 * TaskRunner
 * - Perform tasks sequentially. Further features:

@@ -1,3 +1,5 @@
+//LEVEL: HARD
+
 // Problem statement: 
 // We have collected data from different data-sources, they contain different attributes
 // What we want to do is to merge data based on a specific key

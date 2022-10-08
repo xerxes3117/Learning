@@ -1,3 +1,5 @@
+//LEVEL: HARD
+
 //Todo:
 //1) IMP!! Check mindtickle Sep-2022 Round 1 question. None of approaches here are working for the testcases in that
 //2) In 2nd implementation, make the function more generic. The function should work for any function unlike the function sum also (eg. a function with more arguments)

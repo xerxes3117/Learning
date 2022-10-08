@@ -1,3 +1,5 @@
+//LEVEL: MEDIUM
+
 // Deep Compare 2 objects and output difference between them
 
 let compareObjects = function (object1, object2){

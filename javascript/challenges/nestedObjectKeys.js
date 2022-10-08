@@ -1,3 +1,5 @@
+//LEVEL: EASY
+
 //Display all the keys and values of a nested object
 
 let objPerson = {

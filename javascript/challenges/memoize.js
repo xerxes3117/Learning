@@ -1,3 +1,5 @@
+//LEVEL: MEDIUM
+
 //Memoize function based on argument. If same arguments provided, the function should not compute the values again
 // Todo:
 // 1) See if this is a different question? -> https://youtu.be/A9wQBAipiVo 
