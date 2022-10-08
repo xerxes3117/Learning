@@ -26,14 +26,14 @@ function add(a, b){
 return a + b
 }
 
-let curriedMultiply = curryFunc(multiply);
-let curriedAdd = curryFunc(add);
+let curriedMultiply1 = curryFunc(multiply);
+let curriedAdd1 = curryFunc(add);
 
 //TestCases
-console.log(+curriedMultiply(1)(2)(3))
-console.log(+curriedMultiply(1)(2)(3)(4))
-console.log(+curriedAdd(1)(2)(3))
-console.log(+curriedAdd(1)(2)(3)(4))
+console.log(+curriedMultiply1(1)(2)(3))
+console.log(+curriedMultiply1(1)(2)(3)(4))
+console.log(+curriedAdd1(1)(2)(3))
+console.log(+curriedAdd1(1)(2)(3)(4))
 
 
 // ------------------------------------------- Without using + unary operator but needs to be called with empty arguments  ----------------------------------------------------//
