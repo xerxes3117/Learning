@@ -75,12 +75,12 @@ function deepClone(obj){
           if(typeof el !== 'object'){
             copyArr.push(el) //Base case: Primitive elements inside array
           } else {
-            copyArr.push(deepClone(el))
+            copyArr.push(deepClone(el)) //For non-primitive elements recurively call deepClone
           }
         })
         clone[key] = copyArr
       } else {
-        //For other non-primitive we do recursion
+        //For other non-primitive we recurively call deepClone
         clone[key] = deepClone(value)
       }
   }
