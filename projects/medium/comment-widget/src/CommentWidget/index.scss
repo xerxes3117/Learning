@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+  margin-bottom: 1rem;
+  justify-content: left;
+  display: flex;
+}
+
+.comment {
+  padding-left: 2rem;
+  padding-top: 0.5rem;
+
+  .content {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
+.button {
+  cursor: pointer;
+  border: none;
+  color: white;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  margin-left: 0.5rem;
+  
+  &.primary {
+    background-color: #007bff;
+  }
+
+  &.secondary {
+    background-color: #dc3545;
+  }
+
+  &.lg {
+    width: 10rem;
+  }
+
+  &.md {
+    width: auto;
+    font-size: 0.7rem;
+  }
+}
