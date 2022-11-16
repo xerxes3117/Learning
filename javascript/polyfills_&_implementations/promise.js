@@ -7,7 +7,7 @@
 // 1) test this implementation by running all test cases
 // 2) add comments 
 // 3) add Static methods from Promise api(.resolve, .reject, .all, .race etc.)
-class myPromise {
+class myPromise { 
 
     resolvedData;
     rejectedData;
