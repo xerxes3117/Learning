@@ -21,11 +21,11 @@ class MainActivity : AppCompatActivity() {
                 val name = etName.text.toString()
                 val age = etAge.text.toString().toInt()
                 val country = etCountry.text.toString()
-                Intent(this@MainActivity, SecondActivity::class.java).also {
-                    it.putExtra("EXTRA_NAME", name)
-                    it.putExtra("EXTRA_AGE", age)
-                    it.putExtra("EXTRA_COUNTRY", country)
-                    startActivity(it)
+                Intent(this@MainActivity, SecondActivity::class.java).apply {
+                    putExtra("EXTRA_NAME", name)
+                    putExtra("EXTRA_AGE", age)
+                    putExtra("EXTRA_COUNTRY", country)
+                    startActivity(this)
                 }
             }
         }
