@@ -1,34 +1,44 @@
-package com.example.myapplication
+package com.example.myapplication.Adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Model.TaskModel
 import com.example.myapplication.databinding.TasksRecyclerViewRowBinding
 
-class TaskRecyclerViewAdapter : RecyclerView.Adapter<TaskRecyclerViewAdapter.ViewHolder>() {
+class TaskRecyclerViewAdapter(
+    private val onCheckBoxClick: (Int, Boolean) -> Unit,
+) : RecyclerView.Adapter<TaskRecyclerViewAdapter.ViewHolder>() {
     private val taskList = ArrayList<TaskModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = TasksRecyclerViewRowBinding.inflate(layoutInflater, parent, false)
-        return ViewHolder(view)
+        val binding = TasksRecyclerViewRowBinding.inflate(layoutInflater, parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.isDone.isChecked = taskList[position].isDone
-        holder.taskText.text = taskList[position].taskText
+        holder.bind(taskList[position], position)
     }
 
-    override fun getItemCount(): Int {
-        return taskList.size
-    }
+    override fun getItemCount(): Int = taskList.size
 
-    class ViewHolder(private val binding: TasksRecyclerViewRowBinding) :
+    inner class ViewHolder(private val binding: TasksRecyclerViewRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val isDone: CheckBox = binding.checkBox
-        val taskText: TextView = binding.taskTextView
+        fun bind(task: TaskModel, position: Int) {
+            binding.apply {
+                checkBox.isChecked = task.isDone
+                taskTextView.text = task.taskText
+
+                checkBox.setOnClickListener {
+                    onCheckBoxClick(task.id, checkBox.isChecked)
+                }
+            }
+        }
+    }
+
+    fun getTaskId(position: Int): Int {
+        return taskList[position].id
     }
 
     fun addTask(task: TaskModel) {
@@ -36,13 +46,19 @@ class TaskRecyclerViewAdapter : RecyclerView.Adapter<TaskRecyclerViewAdapter.Vie
         notifyItemInserted(taskList.size - 1)
     }
 
-    fun removeTask(task: TaskModel) {
-        val index = taskList.indexOf(task)
+    fun updateTask(task: TaskModel) {
+        val index = taskList.indexOfFirst { it.id == task.id }
+        taskList[index] = task
+        notifyItemChanged(index)
+    }
+
+    fun removeTask(id: Int) {
+        val index = taskList.indexOfFirst { it.id == id }
         taskList.removeAt(index)
         notifyItemRemoved(index)
     }
 
-    fun setTaskList(taskList: ArrayList<TaskModel>) {
+    fun setTaskList(taskList: MutableList<TaskModel>) {
         this.taskList.clear()
         this.taskList.addAll(taskList)
         notifyItemRangeInserted(0, taskList.size)

@@ -6,16 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.databinding.FragmentFirstBinding
+import com.example.myapplication.databinding.FragmentSecondBinding
 
-class FirstFragment : Fragment(R.layout.fragment_first) {
-    private var _binding: FragmentFirstBinding? = null
+class SecondFragment : Fragment(R.layout.fragment_second) {
+    private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
     }
 
